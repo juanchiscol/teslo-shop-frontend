@@ -21,7 +21,7 @@ export const createUpdateProductAction = async (
     images.push(...newImageNames);
   }
 
-  const imagesToSave = images.map((image) => {
+  const imagesToSave = images.map((image: string) => {
     if (image.includes('http')) return image.split('/').pop() || '';
     return image;
   });
@@ -37,7 +37,7 @@ export const createUpdateProductAction = async (
 
   return {
     ...data,
-    images: data.images.map((image) => {
+    images: data.images.map((image: string) => {
       if (image.includes('http')) return image;
       return `${import.meta.env.VITE_API_URL}/files/product/${image}`;
     }),
